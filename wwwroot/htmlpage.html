@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SignalR Test</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.2/signalr.min.js"></script>
+</head>
+<body>
+    <button id="updateButton">Order</button>
+
+    <script>
+        var connection = new signalR.HubConnectionBuilder().withUrl("/buttonhub").build();
+
+        connection.on("ProcessStarted", function (duration) {
+            var button = document.getElementById("updateButton");
+            button.innerHTML = '<div></div>Processing...'; // Reset inner HTML to include an empty div
+            var progressBar = button.querySelector('div');
+            progressBar.style.transition = 'width ' + duration + 'ms linear';
+            progressBar.style.width = '0%'; // Start progress from 0
+
+            setTimeout(function () {
+                progressBar.style.width = '100%'; // Start the progress bar
+            }, 10);
+        });
+
+        connection.on("ProcessCompleted", function () {
+            var button = document.getElementById("updateButton");
+            button.innerHTML = '✓ Complete'; // Update button text when processing is done
+            button.style.backgroundColor = '#28a745'; // Change to green background when complete
+            button.disabled = false; // Re-enable the button
+        });
+
+        connection.start().catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        document.getElementById("updateButton").addEventListener("click", function () {
+            connection.invoke("StartProcess").catch(function (err) {
+                return console.error(err.toString());
+            });
+            this.disabled = true; // Disable button during processing
+        });
+    </script>
+
+</body>
+</html>

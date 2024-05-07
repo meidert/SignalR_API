@@ -1,0 +1,31 @@
+﻿button {
+    position: relative;
+    padding: 10px 20px;
+    color: white;
+    font-family: Arial, sans-serif; /* Ensures font consistency */
+    font-size: 16px; /* Adjusts the font size */
+    background-color: #007BFF; /* Initial blue background color */
+    border: none;
+    outline: none;
+    cursor: pointer;
+    overflow: hidden; /* Ensures that anything beyond the button's boundary is not shown */
+    border-radius: 20px; /* Rounded corners like in the image */
+}
+
+    button div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: #28a745; /* Green background for progress */
+        transition: width 0.5s ease; /* Smooth transition for the progress filling */
+    }
+
+    button:disabled {
+        background-color: #6c757d; /* Grey out the button when disabled */
+    }
+
+        button:disabled div {
+            background-color: #28a745; /* Keep the progress part green even when disabled */
+        }
