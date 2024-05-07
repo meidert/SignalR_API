@@ -12,20 +12,20 @@
     border-radius: 20px; /* Rounded corners like in the image */
 }
 
-    button div {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0%;
-        height: 100%;
-        background-color: #28a745; /* Green background for progress */
-        transition: width 0.5s ease; /* Smooth transition for the progress filling */
-    }
+button div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #28a745; /* Green background for progress */
+    transition: width 0.5s ease; /* Smooth transition for the progress filling */
+}
 
-    button:disabled {
-        background-color: #6c757d; /* Grey out the button when disabled */
-    }
+button:disabled {
+    background-color: #6c757d; /* Grey out the button when disabled */
+}
 
-        button:disabled div {
-            background-color: #28a745; /* Keep the progress part green even when disabled */
-        }
+button:disabled div {
+    background-color: #28a745; /* Keep the progress part green even when disabled */
+}

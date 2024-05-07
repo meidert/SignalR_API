@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\htmlpage.html" />
+    <None Include="wwwroot\index.html" />
   </ItemGroup>
 
 </Project>

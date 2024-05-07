@@ -19,6 +19,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.MapRazorPages();
+
 app.MapHub<ButtonHub>("/buttonhub"); // Map your SignalR Hub
 
 app.Run();
